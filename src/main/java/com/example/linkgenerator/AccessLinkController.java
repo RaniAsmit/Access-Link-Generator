@@ -64,8 +64,11 @@ public class AccessLinkController {
      * Redirects to the original URL if the token is valid and not expired or used.
      * Example URL: /api/access-links/abc123
      */    @GetMapping("/{id}")
+
+
     public ResponseEntity<?> redirectToTargetResource(@PathVariable String id,
     HttpServletResponse response) {
+
         try {
             logger.info("Processing redirect request for access link ID: {}", id);
             Optional<AccessLink> accessLink = accessLinkService.validateAccessLink(id);
@@ -81,8 +84,12 @@ public class AccessLinkController {
 
                 // Mark link as used before redirecting
                 accessLinkService.markAsUsed(id);
+
+                logger.info("Redirecting to target resource: {} for access link ID: {}", targetResource, id);
+
                 logger.info("Redirecting to target resource: {} for access link ID: {}",
                 targetResource, id);
+
                 response.sendRedirect(targetResource);
                 return ResponseEntity.ok().build();
             } else {
@@ -90,7 +97,7 @@ public class AccessLinkController {
                 return ResponseEntity.status(HttpServletResponse.SC_FORBIDDEN)
                     .body("This link is either expired, already used, or invalid.");
             }
-        } catch (IOException e) {
+    } catch (IOException e) {
             logger.error("Failed to process redirect for access link ID: {}", id, e);
             return ResponseEntity.internalServerError().body("Failed to process redirect");
         }

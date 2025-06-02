@@ -40,15 +40,10 @@ public class AccessLinkService {
         accessLink.setExpiryTime(expiryTime);
         accessLink.setUsed(false);
 
-        logger.info("Assigned ID before saving: {}", accessLink.getId());
 
-        AccessLink savedLink = accessLinkRepository.save(accessLink);
+        logger.info("Generating new access link for target resource: {}, expires at: {}", formattedUrl, expiryTime);
+        return accessLinkRepository.save(accessLink);
 
-        logger.info("Saved AccessLink has ID: {}", savedLink.getId());
-        logger.info("Generated URL: {}", savedLink.getUrl());
-        logger.info("Expires at: {}", savedLink.getExpiryTime());
-
-        return savedLink;
     }
 
     /**
