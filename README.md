@@ -1,8 +1,6 @@
-<<<<<<< HEAD
 # ⏳ TIMELY — Time-Limited Access Link Generator
 
 > *One link. One shot. One moment in time.*
-
 
 ## ✨ What is TIMELY?
 
@@ -10,7 +8,9 @@
 
 Whether you’re sharing a private document, giving limited-time access to an internal service, or creating temporary event invitations — **TIMELY makes sure the door closes exactly when you want it to.**
 
-Built with **Java**, **Spring Boot**, and **MySQL**, it generates unique, self-expiring URLs you can trust — with seconds-to-days level precision.
+Built with **Java**, **Spring Boot**, and **MongoDB**, it generates unique, self-expiring URLs you can trust — with seconds-to-days level precision.
+
+🔗 **Live Demo:** [https://timely.raniasmit.me](https://timely.raniasmit.me)
 
 ---
 
@@ -30,14 +30,15 @@ Forget about lingering links and stale URLs. TIMELY is designed for moments that
 
 ## 🔧 Tech Stack
 
-| Layer       | Tool          |
-|-------------|---------------|
-| Backend     | Java 17, Spring Boot |
-| Database    | MySQL         |
-| API Docs    | Swagger UI    |
-| Build Tool  | Maven         |
-| UI          | Static HTML + CSS (minimalist, calming theme) |
+| Layer       | Tool                   |
+|-------------|------------------------|
+| Backend     | Java 17, Spring Boot   |
+| Database    | MongoDB                |
+| API Docs    | Swagger UI             |
+| Build Tool  | Maven                  |
+| UI          | Static HTML + CSS + JS |
 
+---
 
 ## ⚙️ Features at a Glance
 
@@ -46,7 +47,7 @@ Forget about lingering links and stale URLs. TIMELY is designed for moments that
 - ✅ Expiry configurable per request
 - ✅ REST API: create, validate, revoke
 - ✅ Automatic redirection or error page on expiry
-- ✅ Clean, auditable MySQL-backed storage
+- ✅ Clean, auditable MongoDB-backed storage
 
 ---
 
@@ -63,37 +64,8 @@ Forget about lingering links and stale URLs. TIMELY is designed for moments that
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/timely.git
-cd timely
+git clone https://github.com/RaniAsmit/Timely.git
+cd Timely
 
 # Run the Spring Boot application
 ./mvnw spring-boot:run
-# TIMELY - Time-Limited Access Link Generator
-
-### Generate Secure Time-Limited Access Links with Ease
-
-**TIMELY** is a robust and efficient tool designed to generate time-bound, one-time access links for users. Built with **Java**, **Spring Boot**, and **MySQL**, this project offers a secure solution for sharing time-sensitive resources or data, ensuring that access is granted only within a specified time window.
-
-## 🚀 Features
-
-- **Secure and Expiring Links**: Automatically generates time-limited links that expire after a specified duration.
-- **Custom Time Window**: Customize the expiration time for each link (from seconds to hours or days).
-- **Unique Tokens**: Each generated link comes with a unique token for authentication.
-- **Database-Backed**: All generated links and their expiration times are stored in a MySQL database for tracking and auditing.
-- **Easy-to-Use**: A simple yet powerful interface for both developers and end-users.
-- **RESTful API**: Provides a clean and efficient REST API for integration into any application or service.
-
-## 🛠️ Technology Stack
-
-- **Java**: The core language for building the application.
-- **Spring Boot**: To quickly develop a secure and production-ready backend.
-- **MySQL**: Storing generated links and tracking expiration times.
-- **Swagger UI**: For easy API exploration and documentation.
-- **Maven**: For dependency management and build automation.
-
-## 🔥 Key Benefits
-
-- **Security**: With a unique token and a time-bound expiration, the link ensures that unauthorized access is prevented after the expiration time.
-- **Scalability**: Easily configurable to scale with increasing traffic and user needs.
-- **Flexibility**: Whether for secure file sharing, temporary access to internal systems, or event invitations, this tool can be adapted to various use cases.
-- **User Control**: Administrators can easily monitor and manage the links generated.
