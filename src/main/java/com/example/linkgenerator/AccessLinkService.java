@@ -34,7 +34,7 @@ public class AccessLinkService {
           AccessLink accessLink = new AccessLink();
         String id = UUID.randomUUID().toString();
         accessLink.setId(id);
-        accessLink.setUrl("https://timely.raniasmit.me/redirect/" + id);
+        accessLink.setUrl("https://timely-backend.raniasmit.me" + id);
         accessLink.setTargetResource(formattedUrl);
         accessLink.setExpiryTime(expiryTime);
         accessLink.setUsed(false);
