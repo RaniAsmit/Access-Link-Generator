@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/api/access-links")
 public class AccessLinkController {
 
