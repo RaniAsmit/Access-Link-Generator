@@ -31,10 +31,11 @@ public class AccessLinkService {
     public AccessLink generateAccessLink(String targetResource, LocalDateTime expiryTime) {
         // Validate and format the target resource URL
         String formattedUrl = formatAndValidateUrl(targetResource);
-          AccessLink accessLink = new AccessLink();
+        
+        AccessLink accessLink = new AccessLink();
         String id = UUID.randomUUID().toString();
         accessLink.setId(id);
-        accessLink.setUrl("https://timely-backend.raniasmit.me" + id);
+        accessLink.setUrl("http://timely-backend.raniasmit.me/api/access-links/" + id);
         accessLink.setTargetResource(formattedUrl);
         accessLink.setExpiryTime(expiryTime);
         accessLink.setUsed(false);
