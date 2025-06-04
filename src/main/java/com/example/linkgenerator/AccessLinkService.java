@@ -11,8 +11,9 @@ import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import com.example.linkgenerator.config.AppConfig;
 
 @Service
 public class AccessLinkService {
@@ -22,8 +23,8 @@ public class AccessLinkService {
     @Autowired
     AccessLinkRepository accessLinkRepository;
 
-    @Value("${app.base-url}")
-    private String baseUrl;
+    @Autowired
+    private AppConfig appConfig;
 
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a")
             .withZone(ZoneId.of("Asia/Kolkata")); // Indian Standard Time (IST)
@@ -39,7 +40,7 @@ public class AccessLinkService {
         AccessLink accessLink = new AccessLink();
         String id = UUID.randomUUID().toString();
         accessLink.setId(id);
-        accessLink.setUrl(baseUrl + "/api/access-links/" + id);
+        accessLink.setUrl(appConfig.getBaseUrl() + "/api/access-links/" + id);
         accessLink.setTargetResource(formattedUrl);
         accessLink.setExpiryTime(expiryTime);
         accessLink.setUsed(false);
